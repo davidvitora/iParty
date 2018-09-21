@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">iparty</string>
+    <string name="login_subtext">Faça a festa dos seus sonhos acontecer!</string>
+    <string name="login_facebook">Login com Facebook</string>
+    <string name="login_email">Email</string>
+    <string name="login_senha">Senha</string>
+    <string name="login_forgtpassword">Esqueceu a senha?</string>
+    <string name="login_login">Login</string>
+    <string name="login_createaccount">Não possui uma Conta?</string>
 </resources>
