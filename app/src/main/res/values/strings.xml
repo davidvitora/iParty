@@ -7,7 +7,8 @@
     <string name="login_forgtpassword">Esqueceu a senha?</string>
     <string name="login_login">Login</string>
     <string name="login_createaccount">Não possui uma Conta?</string>
-
+    <string name="register_createaccount">Criar Conta</string>
+    <string name="register_new">Novo Cadastro</string>
     <!-- Facebook login -->
     <string name="facebook_app_id">436453446883272</string>
     <string name="fb_login_protocol_scheme">fb436453446883272</string>

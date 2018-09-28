@@ -1,5 +1,6 @@
 package com.example.comp8.iparty;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void cadastro(View view) {
+        Intent it = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(it);
     }
 
     public void esqueceu_senha(View view) {
