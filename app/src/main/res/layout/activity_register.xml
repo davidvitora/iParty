@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    tools:context=".RegisterActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_new"
+            android:textSize="40dp"/>
+
+        <EditText
+            android:layout_marginTop="30px"
+            android:id="@+id/editTextUserName"
+            android:hint="User"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:layout_marginTop="10px"
+            android:id="@+id/editTextEmail"
+            android:hint="Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+        </EditText>
+
+        <EditText
+            android:layout_marginTop="10px"
+            android:id="@+id/editTextPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            />
+
+        <EditText
+            android:layout_marginTop="10px"
+            android:id="@+id/editTextConfirmPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/buttonCreateAccount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/com_facebook_blue"
+            android:textColor="@color/white"
+            android:text="@string/register_createaccount"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+</ScrollView>
