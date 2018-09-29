@@ -1,13 +1,14 @@
 package com.example.comp8.iparty;
 
 import android.content.Intent;
+import android.service.autofill.FillEventHistory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import android.widget.Toast;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -20,7 +21,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText et_email;
     private EditText et_senha;
 
+
     private CallbackManager callbackManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,12 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    public void login(View view) {
+        Intent it = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(it);
+    }
+
+
     public void cadastro(View view) {
         Intent it = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(it);
@@ -58,4 +67,5 @@ public class LoginActivity extends AppCompatActivity {
 
     public void esqueceu_senha(View view) {
     }
+
 }
