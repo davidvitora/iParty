@@ -1,72 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:gravity="center_vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register_new"
-            android:textSize="40dp"/>
+            android:layout_gravity="center"
+            android:text="@string/register_label_new"
+            android:textSize="40dp" />
 
         <EditText
-            android:layout_marginTop="30px"
-            android:id="@+id/etUsername"
-            android:hint="User"
+            android:id="@+id/edit_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-
+            android:layout_marginTop="50dp"
+            android:hint="User"
+            android:inputType="text"
+            android:shadowColor="@color/colorAccent">
             <requestFocus />
         </EditText>
 
         <EditText
-            android:layout_marginTop="10px"
             android:id="@+id/edit_mail"
-            android:hint="Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-
-
+            android:layout_marginTop="15dp"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:shadowColor="@color/colorAccent">
         </EditText>
 
         <EditText
-            android:layout_marginTop="10px"
             android:id="@+id/edit_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:layout_marginTop="15dp"
+            android:hint="@string/login_hint_password"
             android:inputType="textPassword"
-            />
+            android:shadowColor="@color/colorAccent"/>
 
         <EditText
-            android:layout_marginTop="10px"
-            android:id="@+id/etConfirmPassword"
+            android:id="@+id/edit_confirm_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm Password"
+            android:layout_marginTop="15dp"
+            android:hint="@string/register_hint_confirm_password"
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/btnCreateAccount"
+            android:id="@+id/button_create_account"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@color/com_facebook_blue"
-            android:textColor="@color/white"
             android:text="@string/register_createaccount"
-            android:layout_marginTop="20dp" />
-
+            android:textColor="@color/white" />
     </LinearLayout>
-
 </ScrollView>

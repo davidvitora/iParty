@@ -72,7 +72,7 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:background="@color/white"
-                android:hint="@string/login_hint_senha"
+                android:hint="@string/login_hint_password"
                 android:inputType="textPassword"
                 android:paddingHorizontal="5dp" />
 

@@ -8,7 +8,7 @@ import com.iparty.database.model.UserModel;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NOME = "banco.sqliteDatabase";
+    private static final String DATABASE_NOME = "iparty.db";
     private static final int DATABASE_VERSION = 1;
 
     public DBOpenHelper(Context context) {
@@ -23,6 +23,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL(UserModel.DROP_TABLE);
+        db.execSQL(UserModel.CREATE_TABLE);
     }
 }
