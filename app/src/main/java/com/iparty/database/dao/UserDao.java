@@ -1,9 +1,9 @@
-package com.example.comp8.iparty.database.dao;
+package com.iparty.database.dao;
 
 import android.content.Context;
 
-import com.example.comp8.iparty.database.DBOpenHelper;
-import com.example.comp8.iparty.database.model.UserModel;
+import com.iparty.database.DBOpenHelper;
+import com.iparty.database.model.UserModel;
 
 import java.util.List;
 
@@ -20,15 +20,15 @@ public class UserDao extends AbstractDAO {
         dbOpenHelper = new DBOpenHelper(context);
     }
 
-    public int Delete(){
+    public int Delete() {
         return 0;
     }
 
-    public int Update(){
+    public int Update() {
         return 0;
     }
 
-    public List<UserModel> Select(){
+    public List<UserModel> Select() {
         return null;
     }
 }

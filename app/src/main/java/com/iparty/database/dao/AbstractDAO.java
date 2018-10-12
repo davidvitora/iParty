@@ -1,12 +1,12 @@
-package com.example.comp8.iparty.database.dao;
+package com.iparty.database.dao;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.comp8.iparty.database.DBOpenHelper;
-import com.example.comp8.iparty.database.model.UserModel;
+import com.iparty.database.DBOpenHelper;
+import com.iparty.database.model.UserModel;
 
 public abstract class AbstractDAO {
 

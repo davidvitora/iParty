@@ -1,10 +1,10 @@
-package com.example.comp8.iparty.database;
+package com.iparty.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.comp8.iparty.database.model.UserModel;
+import com.iparty.database.model.UserModel;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
 

@@ -1,14 +1,14 @@
-package com.example.comp8.iparty.database.model;
+package com.iparty.database.model;
 
 public class UserModel {
 
     public static final String TABLE_NAME = "users";
 
     public static final String
-            ID ="_id",
-            USER_NAME ="user_name",
-            EMAIL ="email",
-            PASSWORD ="password";
+            ID = "_id",
+            USER_NAME = "user_name",
+            EMAIL = "email",
+            PASSWORD = "password";
 
     public static final String CREATE_TABLE =
             "create table " + TABLE_NAME

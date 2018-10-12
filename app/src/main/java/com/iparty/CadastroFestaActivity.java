@@ -1,9 +1,11 @@
-package com.example.comp8.iparty;
+package com.iparty;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.example.comp8.iparty.R;
 
 public class CadastroFestaActivity extends AppCompatActivity {
 
@@ -28,14 +30,14 @@ public class CadastroFestaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro_festa);
         nome = (EditText) findViewById(R.id.txtNome);
-        selectAniversario =  (ImageView) findViewById(R.id.selectAniversario);
-        checkAniversario =  (ImageView) findViewById(R.id.checkAniversario);
+        selectAniversario = (ImageView) findViewById(R.id.selectAniversario);
+        checkAniversario = (ImageView) findViewById(R.id.checkAniversario);
 
-        select15Anos =  (ImageView) findViewById(R.id.select15Anos);
-        check15Anos =  (ImageView) findViewById(R.id.check15Anos);
+        select15Anos = (ImageView) findViewById(R.id.select15Anos);
+        check15Anos = (ImageView) findViewById(R.id.check15Anos);
 
-        selectCasamento =  (ImageView) findViewById(R.id.selectCasamento);
-        checkCasamento =  (ImageView) findViewById(R.id.checkCasamento);
+        selectCasamento = (ImageView) findViewById(R.id.selectCasamento);
+        checkCasamento = (ImageView) findViewById(R.id.checkCasamento);
 
         aniversariante = (EditText) findViewById(R.id.txtAniversariante);
         noivo = (EditText) findViewById(R.id.txtNoivo);

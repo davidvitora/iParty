@@ -21,7 +21,7 @@
 
         <EditText
             android:layout_marginTop="30px"
-            android:id="@+id/editTextUserName"
+            android:id="@+id/etUsername"
             android:hint="User"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
 
         <EditText
             android:layout_marginTop="10px"
-            android:id="@+id/editTextEmail"
+            android:id="@+id/etEmail"
             android:hint="Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
 
         <EditText
             android:layout_marginTop="10px"
-            android:id="@+id/editTextPassword"
+            android:id="@+id/etPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -52,14 +52,14 @@
 
         <EditText
             android:layout_marginTop="10px"
-            android:id="@+id/editTextConfirmPassword"
+            android:id="@+id/etConfirmPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/buttonCreateAccount"
+            android:id="@+id/btnCreateAccount"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/com_facebook_blue"

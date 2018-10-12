@@ -1,9 +1,9 @@
-package com.example.comp8.iparty;
+package com.iparty;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
-import android.widget.ImageView;
+
+import com.example.comp8.iparty.R;
 
 public class HomeActivity extends AppCompatActivity {
 
