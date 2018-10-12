@@ -21,7 +21,7 @@
 
                 android:id="@+id/login_logo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:src="@drawable/logo" />
@@ -29,14 +29,14 @@
             <ImageView
                 android:id="@+id/login_title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:src="@drawable/title" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:fontFamily="monospace"
@@ -47,7 +47,7 @@
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/facebook_login_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="30dp" />
@@ -58,16 +58,11 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/white"
                 android:hint="@string/login_email"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="5dp" />
-
-            <View
-                android:layout_width="270dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="@color/Black" />
 
 
             <EditText
