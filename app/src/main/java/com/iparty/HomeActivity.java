@@ -3,7 +3,7 @@ package com.iparty;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.comp8.iparty.R;
+import com.iparty.R;
 
 public class HomeActivity extends AppCompatActivity {
 

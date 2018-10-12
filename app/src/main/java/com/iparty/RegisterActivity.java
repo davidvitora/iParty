@@ -7,8 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.comp8.iparty.R;
-
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText etUsername;
@@ -21,9 +19,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         etUsername = (EditText) findViewById(R.id.etUsername);
-        etPassword = (EditText) findViewById(R.id.etPassword);
+        etPassword = (EditText) findViewById(R.id.edit_password);
         etConfirmPassword = (EditText) findViewById(R.id.etConfirmPassword);
-        email = (EditText) findViewById(R.id.etEmail);
+        email = (EditText) findViewById(R.id.edit_mail);
         btnCreateAccount = (Button) findViewById(R.id.btnCreateAccount);
     }
 

@@ -32,7 +32,7 @@
 
         <EditText
             android:layout_marginTop="10px"
-            android:id="@+id/etEmail"
+            android:id="@+id/edit_mail"
             android:hint="Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
 
         <EditText
             android:layout_marginTop="10px"
-            android:id="@+id/etPassword"
+            android:id="@+id/edit_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Password"

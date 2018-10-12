@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.comp8.iparty.R;
+import com.iparty.R;
 
 public class CadastroFestaActivity extends AppCompatActivity {
 

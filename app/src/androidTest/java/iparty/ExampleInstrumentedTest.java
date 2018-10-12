@@ -1,4 +1,4 @@
-package com.example.comp8.iparty;
+package iparty;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

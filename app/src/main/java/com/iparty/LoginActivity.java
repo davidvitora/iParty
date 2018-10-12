@@ -4,34 +4,45 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.comp8.iparty.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button login;
-    private EditText etEmail;
-    private EditText etPassword;
+    private static class ViewHolder {
+        Button buttonLogin;
+        EditText editEmail;
+        EditText editPassword;
+        TextView textRegister;
+    }
 
+    private ViewHolder viewHolder = new ViewHolder();
     private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        login = (Button) findViewById(R.id.btn_lg_login);
+        this.setContentView(R.layout.activity_login);
 
-        callbackManager = CallbackManager.Factory.create();
+        this.viewHolder.editEmail = (EditText) findViewById(R.id.edit_mail);
+        this.viewHolder.editPassword = (EditText) findViewById(R.id.edit_password);
+        this.viewHolder.buttonLogin = (Button) findViewById(R.id.button_login);
+        this.viewHolder.textRegister = (TextView) findViewById(R.id.text_register);
+
+        this.viewHolder.buttonLogin.setOnClickListener(this);
+        this.viewHolder.textRegister.setOnClickListener(this);
+
+        this.callbackManager = CallbackManager.Factory.create();
 
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
@@ -52,19 +63,20 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    public void login(View view) {
-        Intent it = new Intent(LoginActivity.this, HomeActivity.class);
-        startActivity(it);
-    }
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
 
-
-    public void toRegisterScreen(View view) {
-        Intent it = new Intent(LoginActivity.this, RegisterActivity.class);
-        startActivity(it);
-    }
-
-    public void toForgetPassworScreen(View view) {
-
+        switch (id) {
+            case R.id.button_login:
+                Intent itLogin = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(itLogin);
+                break;
+            case R.id.text_register:
+                Intent itRegister = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(itRegister);
+                break;
+        }
     }
 
 }

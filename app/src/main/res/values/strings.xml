@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IParty</string>
+    <string name="app_name">iParty</string>
 
     <!-- Login -->
     <string name="login_img_logo">imgLogo</string>
