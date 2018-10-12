@@ -5,7 +5,7 @@ android {
     }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.comp8.iparty"
+        applicationId "com.iparty"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
