@@ -1,6 +1,5 @@
 package com.iparty;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,14 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.iparty.database.dao.UserDao;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,7 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private ViewHolder viewHolder = new ViewHolder();
-    private UserDao userDao;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,25 +43,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         this.viewHolder.buttonLogin.setOnClickListener(this);
         this.viewHolder.textRegister.setOnClickListener(this);
 
-        // Facebook Login
-        this.viewHolder.facebookLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
-        this.viewHolder.facebookLoginButton.registerCallback(CallbackManager.Factory.create(),
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        Toast.makeText(LoginActivity.this, "Login com sucesso", Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Toast.makeText(LoginActivity.this, "Login cancelado", Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        Toast.makeText(LoginActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+        // External log-ins
+        this.facebookLogin();
     }
 
     @Override
@@ -85,5 +64,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void facebookLogin() {
+        this.viewHolder.facebookLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
+        this.callbackManager = CallbackManager.Factory.create();
+        this.viewHolder.facebookLoginButton.registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Toast.makeText(LoginActivity.this, "Login com sucesso", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancel() { }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        Toast.makeText(LoginActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }
