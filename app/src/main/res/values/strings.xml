@@ -17,6 +17,17 @@
     <string name="register_createaccount">Criar Conta</string>
     <string name="register_label_new">Novo Cadastro</string>
     <string name="register_hint_confirm_password">Confirmar senha</string>
+    <string name="server_error">Erro no servidor</string>
+    <string name="server_error_title">Erro</string>
+    <string name="alert_dialog_button_ok">Ok</string>
+    <string name="alert_dialog_success">Sucesso</string>
+    <string name="alert_dialog_success_message">Cadastro efetuado!</string>
+    <string name="progress_dialog_message">Carregando...</string>
+    <string name="edit_text_error_message_insert_user">Insira o Usuario!</string>
+    <string name="edit_text_error_message_insert_email">É necessario informar o email</string>
+    <string name="edit_text_error_message_insert_password">Insira a Senha!</string>
+    <string name="edit_text_error_message_insert_confirm_password">É necessario confirmar a senha</string>
+    <string name="edit_text_error_message_passwords_not_match">A senha não corrreponde</string>
 
 
 </resources>

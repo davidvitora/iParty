@@ -2,6 +2,7 @@ package com.iparty;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.iparty.api.AuthApi;
 import com.iparty.database.dao.UserDao;
 import com.iparty.model.User;
+
+import java.net.HttpURLConnection;
+
+import okhttp3.internal.framed.Http2;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private ViewHolder viewHolder = new ViewHolder();
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +58,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.button_create_account:
                 if (validateFields()){
                     createNewAccount();
-                    alertSuccess();
                 }
                 break;
         }
@@ -56,23 +65,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private boolean validateFields() {
         if (TextUtils.isEmpty(this.viewHolder.editUsername.getText().toString())) {
-            this.viewHolder.editUsername.setError("Insira o Usuario!");
+            this.viewHolder.editUsername.setError(getString(R.string.edit_text_error_message_insert_user));
             return false;
         }
         if (TextUtils.isEmpty(this.viewHolder.editEmail.getText().toString())) {
-            this.viewHolder.editEmail.setError("É necessario informar o email");
+            this.viewHolder.editEmail.setError(getString(R.string.edit_text_error_message_insert_email));
             return false;
         }
         if (TextUtils.isEmpty(this.viewHolder.editPassword.getText().toString())) {
-            this.viewHolder.editPassword.setError("Insira a Senha!");
+            this.viewHolder.editPassword.setError(getString(R.string.edit_text_error_message_insert_password));
             return false;
         }
         if (TextUtils.isEmpty(this.viewHolder.editConfirmPassword.getText().toString())) {
-            this.viewHolder.editConfirmPassword.setError("É necessario confirmar a senha");
+            this.viewHolder.editConfirmPassword.setError(getString(R.string.edit_text_error_message_insert_confirm_password));
             return false;
         }
         if (!validPasswords()) {
-            this.viewHolder.editConfirmPassword.setError("A senha não corrreponde");
+            this.viewHolder.editConfirmPassword.setError(getString(R.string.edit_text_error_message_passwords_not_match));
             return false;
         }
         return true;
@@ -84,23 +93,65 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void createNewAccount(){
-        UserDao userDao = new UserDao(this);
+        progressDialog = new ProgressDialog(RegisterActivity.this);
+        progressDialog.setMessage(getString(R.string.progress_dialog_message));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
         User user = new User();
         user.setName(this.viewHolder.editUsername.getText().toString());
         user.setEmail(this.viewHolder.editEmail.getText().toString());
         user.setPassword(this.viewHolder.editPassword.getText().toString());
-        userDao.insert(user);
+        user.setConfirmPassword(this.viewHolder.editConfirmPassword.getText().toString());
+
+        AuthApi authApi = AuthApi.openRetrofit.create(AuthApi.class);
+        Call<Void> call = authApi.signup(user);
+        call.enqueue( new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response){
+                if (progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                    if (response.code() == HttpURLConnection.HTTP_CREATED){
+                        alertSuccess();
+                    } else {
+                        error(response.errorBody().toString());
+                    }
+                }
+            }
+            @Override
+             public void onFailure(Call<Void> call, Throwable t){
+                if (progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
+                Toast.makeText(RegisterActivity.this, R.string.server_error, Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     private void alertSuccess(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Sucesso");
-        builder.setMessage("Cadastro efetuado!");
+        builder.setTitle(R.string.alert_dialog_success);
+        builder.setMessage(R.string.alert_dialog_success_message);
         builder.setCancelable(false);
-        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.alert_dialog_button_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 finish();
+            }
+        });
+        builder.create().show();
+    }
+
+    private void error(String message){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.server_error_title);
+        builder.setMessage(message);
+        builder.setCancelable(false);
+        builder.setNeutralButton(R.string.alert_dialog_button_ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
             }
         });
         builder.create().show();
