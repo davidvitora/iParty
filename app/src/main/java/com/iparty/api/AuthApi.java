@@ -1,5 +1,6 @@
 package com.iparty.api;
 
+import com.iparty.model.Token;
 import com.iparty.model.User;
 
 import retrofit2.Call;
@@ -10,14 +11,17 @@ import retrofit2.http.POST;
 
 public interface AuthApi {
 
-    Retrofit openRetrofit = new Retrofit.Builder()
+    Retrofit RETROFIT = new Retrofit.Builder()
             .baseUrl("https://iparty-server.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    @POST("api/iparty/login")
-    Call<User> login(@Body User user);
+    @POST("api/login")
+    Call<Token> login(@Body User user);
 
-    @POST("api/iparty/signup")
+    @POST("api/validateToken")
+    Call<Void> validateToken(@Body Token token);
+
+    @POST("api/signup")
     Call<Void> signup(@Body User user);
 }

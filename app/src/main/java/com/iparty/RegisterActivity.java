@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         user.setPassword(this.viewHolder.editPassword.getText().toString());
         user.setConfirmPassword(this.viewHolder.editConfirmPassword.getText().toString());
 
-        AuthApi authApi = AuthApi.openRetrofit.create(AuthApi.class);
+        AuthApi authApi = AuthApi.RETROFIT.create(AuthApi.class);
         Call<Void> call = authApi.signup(user);
         call.enqueue( new Callback<Void>() {
             @Override
