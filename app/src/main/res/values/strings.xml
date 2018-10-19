@@ -28,6 +28,11 @@
     <string name="edit_text_error_message_insert_password">Insira a Senha!</string>
     <string name="edit_text_error_message_insert_confirm_password">É necessario confirmar a senha</string>
     <string name="edit_text_error_message_passwords_not_match">A senha não corrreponde</string>
+    <string name="login_invalid_email_password">Email/senha inválida</string>
+    <string name="storage_iparty_token_key">iparty_token</string>
+    <string name="storage_iparty_remember_key">remember</string>
+    <string name="storage_iparty_email_key">email</string>
+    <string name="login_checkbox_remember_me">Lembrar-me</string>
 
 
 </resources>
