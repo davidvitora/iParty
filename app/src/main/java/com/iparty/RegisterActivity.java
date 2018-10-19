@@ -1,10 +1,8 @@
 package com.iparty;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -14,12 +12,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.iparty.api.AuthApi;
-import com.iparty.database.dao.UserDao;
 import com.iparty.model.User;
 
 import java.net.HttpURLConnection;
 
-import okhttp3.internal.framed.Http2;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,11 +37,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        this.viewHolder.editUsername = (EditText) findViewById(R.id.edit_username);
-        this.viewHolder.editPassword = (EditText) findViewById(R.id.edit_password);
-        this.viewHolder.editConfirmPassword = (EditText) findViewById(R.id.edit_confirm_password);
-        this.viewHolder.editEmail = (EditText) findViewById(R.id.edit_mail);
-        this.viewHolder.buttonCreateAccount = (Button) findViewById(R.id.button_create_account);
+        this.viewHolder.editUsername = findViewById(R.id.edit_username);
+        this.viewHolder.editPassword = findViewById(R.id.edit_password);
+        this.viewHolder.editConfirmPassword = findViewById(R.id.edit_confirm_password);
+        this.viewHolder.editEmail = findViewById(R.id.edit_mail);
+        this.viewHolder.buttonCreateAccount = findViewById(R.id.button_create_account);
 
         this.viewHolder.buttonCreateAccount.setOnClickListener(this);
     }

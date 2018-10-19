@@ -33,6 +33,9 @@
     <string name="storage_iparty_remember_key">remember</string>
     <string name="storage_iparty_email_key">email</string>
     <string name="login_checkbox_remember_me">Lembrar-me</string>
+    <string name="title_activity_forget_password">forget_password</string>
+    <string name="forget_password_label">Recuperar senha</string>
+    <string name="forget_password_button_send_email">Enviar</string>
 
 
 </resources>

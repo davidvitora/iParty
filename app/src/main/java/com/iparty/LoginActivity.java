@@ -88,7 +88,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(itRegister);
                 break;
             case R.id.text_forget_password:
-
+                Intent irForgetPassword = new Intent(LoginActivity.this, ForgetPassword.class);
+                startActivity(irForgetPassword);
                 break;
         }
     }
