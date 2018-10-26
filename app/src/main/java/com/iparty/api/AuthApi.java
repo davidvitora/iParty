@@ -12,12 +12,7 @@ import retrofit2.http.POST;
 /**
  * Created by Maurício Generoso on 18/10/2018
  */
-public interface AuthApi {
-
-    Retrofit RETROFIT = new Retrofit.Builder()
-            .baseUrl("https://iparty-server.herokuapp.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
+public interface AuthApi extends BaseApi {
 
     @POST("api/login")
     Call<Token> login(@Body User user);

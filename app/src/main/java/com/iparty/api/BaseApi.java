@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by Maurício Generoso on 25/10/2018
  */
-public interface AbstractRetrofit {
+public interface BaseApi {
 
     Retrofit RETROFIT = new Retrofit.Builder()
             .baseUrl("https://iparty-server.herokuapp.com/")

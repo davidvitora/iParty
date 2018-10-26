@@ -84,12 +84,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 commonLogin();
                 break;
             case R.id.text_register:
-                Intent itRegister = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(itRegister);
+                openRegisterActivity();
                 break;
             case R.id.text_forget_password:
-                Intent irForgetPassword = new Intent(LoginActivity.this, ForgetPassword.class);
-                startActivity(irForgetPassword);
+                openForgetPasswordActivity();
                 break;
         }
     }
@@ -203,6 +201,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void openHomeActivity() {
         Intent itLogin = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(itLogin);
+    }
+
+    private void openForgetPasswordActivity() {
+        Intent irForgetPassword = new Intent(LoginActivity.this, ForgetPassword.class);
+        startActivity(irForgetPassword);
+    }
+
+    private void openRegisterActivity() {
+        Intent itRegister = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(itRegister);
     }
 
     private void error(String message) {
