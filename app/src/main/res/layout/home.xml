@@ -37,6 +37,7 @@
                 android:layout_marginLeft="60dp"
                 android:padding="10dp"/>
             <TextView
+                android:id="@+id/txtvNomeUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Eduardo Zacarim"
@@ -185,6 +186,7 @@
             android:textColor="@color/white"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/btnCriarEvento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="?android:attr/listSeparatorTextViewStyle"

@@ -1,16 +1,84 @@
 package com.iparty;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.login.widget.LoginButton;
 import com.iparty.R;
+import com.iparty.Utilities.Storage;
+import com.iparty.api.AuthApi;
+import com.iparty.api.UserApi;
+import com.iparty.model.Token;
+import com.iparty.model.User;
 
-public class HomeActivity extends AppCompatActivity {
+import java.net.HttpURLConnection;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static class ViewHolder {
+        TextView txtvNomeUsuario;
+        LinearLayout btnCriarEvento;
+    }
+    private UserApi userApi;
+    private User user;
+    private ViewHolder viewHolder = new ViewHolder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        this.userApi = AuthApi.RETROFIT.create(UserApi.class);
+        this.viewHolder.txtvNomeUsuario = findViewById(R.id.txtvNomeUsuario);
+
+        final String token = Storage.get(HomeActivity.this, getString(R.string.storage_iparty_token_key));
+
+        Call<User> call = userApi.getUser(token);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.code() == HttpURLConnection.HTTP_OK) {
+                    user = response.body();
+                    viewHolder.txtvNomeUsuario.setText(user.getName());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, R.string.server_error, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        this.viewHolder.btnCriarEvento = findViewById(R.id.btnCriarEvento);
+        this.viewHolder.btnCriarEvento.setOnClickListener(this);
+
     }
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+
+        switch (id) {
+            case R.id.txtNoiva:
+                break;
+            case R.id.btnCriarEvento:
+                 Intent itRegister = new Intent(HomeActivity.this, CadastroFestaActivity.class);
+                 startActivity(itRegister);
+                break;
+            case R.id.text_forget_password:
+                break;
+        }
+    }
+
 }

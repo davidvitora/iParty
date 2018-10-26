@@ -1,5 +1,7 @@
 package com.iparty.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Maurício Generoso on 18/10/2018
  */
