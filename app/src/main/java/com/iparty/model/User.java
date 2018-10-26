@@ -1,9 +1,7 @@
 package com.iparty.model;
 
 /**
- * User Model
- * 
- * @author Maurício Generoso
+ * Created by Maurício Generoso on 18/10/2018
  */
 public class User {
 

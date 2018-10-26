@@ -9,6 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
+/**
+ * Created by Maurício Generoso on 18/10/2018
+ */
 public interface AuthApi {
 
     Retrofit RETROFIT = new Retrofit.Builder()
