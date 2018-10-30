@@ -12,6 +12,7 @@ public class User {
     private String email;
     private String password;
     private String confirmPassword;
+    private String imgSrc;
 
     public int getId() {
         return id;
@@ -49,7 +50,10 @@ public class User {
         return confirmPassword;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
+    public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
+
+    public String getImgSrc() { return imgSrc; }
+
+    public void setImgSrc(String imgSrc) { this.imgSrc = imgSrc; }
+
 }
