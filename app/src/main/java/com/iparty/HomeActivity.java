@@ -9,12 +9,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iparty.Utilities.Globals;
 import com.iparty.Utilities.Storage;
 import com.iparty.api.AuthApi;
 import com.iparty.api.UserApi;
 import com.iparty.model.User;
 import com.squareup.picasso.Picasso;
+
 import java.net.HttpURLConnection;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +29,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout btnCriarEvento;
         ImageView userPicture;
     }
+
     private UserApi userApi;
     private User user;
     private ViewHolder viewHolder = new ViewHolder();
@@ -50,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     user = response.body();
                     System.out.println(user);
                     viewHolder.txtvNomeUsuario.setText(user.getName());
-                    Picasso.get().load(user.getImgSrc()).into(viewHolder.userPicture);
+                    Picasso.get().load(Globals.BUCKET_URL  + user.getId() + Globals.FILE_EXTENSION).into(viewHolder.userPicture);
 
                 }
             }
@@ -66,6 +70,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         this.viewHolder.userPicture.setOnClickListener(this);
 
     }
+
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -74,8 +79,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.txtNoiva:
                 break;
             case R.id.btnCriarEvento:
-                 Intent itRegister = new Intent(HomeActivity.this, CadastroFestaActivity.class);
-                 startActivity(itRegister);
+                Intent itRegister = new Intent(HomeActivity.this, CadastroFestaActivity.class);
+                startActivity(itRegister);
                 break;
             case R.id.userPicture:
                 Intent itPicture = new Intent(HomeActivity.this, PictureActivity.class);

@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iparty.Utilities.Globals;
 import com.iparty.Utilities.Storage;
 import com.iparty.api.AuthApi;
 import com.iparty.api.UserApi;
@@ -62,8 +63,6 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == HttpURLConnection.HTTP_OK) {
                     user = response.body();
-                    System.out.println(user);
-                    Picasso.get().load(user.getImgSrc()).into(viewHolder.profileImage);
 
                 }
             }
@@ -76,6 +75,8 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
 
         this.viewHolder.setPicture.setOnClickListener(this);
         this.viewHolder.profileImage.setOnClickListener(this);
+        //async aqui
+        //Picasso.get().load(Globals.BUCKET_URL  + user.getId() + Globals.FILE_EXTENSION).into(viewHolder.profileImage);
 
 
     }
