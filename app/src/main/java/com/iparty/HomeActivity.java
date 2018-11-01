@@ -1,12 +1,8 @@
 package com.iparty;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,13 +14,7 @@ import com.iparty.api.AuthApi;
 import com.iparty.api.UserApi;
 import com.iparty.model.User;
 import com.squareup.picasso.Picasso;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,6 +29,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private UserApi userApi;
     private User user;
     private ViewHolder viewHolder = new ViewHolder();
+    public static final int PICK_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +63,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         this.viewHolder.btnCriarEvento = findViewById(R.id.btnCriarEvento);
         this.viewHolder.btnCriarEvento.setOnClickListener(this);
+        this.viewHolder.userPicture.setOnClickListener(this);
 
     }
-
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -86,8 +77,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                  Intent itRegister = new Intent(HomeActivity.this, CadastroFestaActivity.class);
                  startActivity(itRegister);
                 break;
-            case R.id.text_forget_password:
+            case R.id.userPicture:
+                Intent itPicture = new Intent(HomeActivity.this, PictureActivity.class);
+                startActivity(itPicture);
                 break;
         }
     }
+
 }
