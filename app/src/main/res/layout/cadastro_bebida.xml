@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10"
+            android:padding="10pt"
             android:layout_gravity="center"
             >
             <TextView
@@ -134,7 +134,7 @@
                 android:textColor="@color/white"/>
             <Button
                 android:id="@+id/btnDeletarBebida"
-                android:layout_marginLeft="80"
+                android:layout_marginLeft="80px"
                 android:layout_width="wrap_content"
                 android:layout_height="18pt"
                 android:backgroundTint="@color/colorPrimary"
@@ -205,6 +205,7 @@
             android:layout_marginTop="20dp">
 
             <TableLayout
+                android:id="@+id/listBebidasPrecadastradas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stretchColumns="*"
@@ -229,7 +230,7 @@
                         tools:padding="10dp" />
 
                     <TextView
-                        android:text="Quantidade Recomendada"
+                        android:text="Preço por litro"
                         android:textAppearance="@style/TextAppearance.AppCompat"
                         android:textColor="@color/white"
                         android:textSize="14sp"
@@ -238,41 +239,6 @@
 
                     <TextView
                         android:text="Preço"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        tools:padding="10dp" />
-                </TableRow>
-
-                <TableRow
-                    android:divider="@color/white"
-                    android:gravity="center_horizontal"
-                    android:padding="10"
-                    android:showDividers="middle">
-
-                    <ImageView
-                        android:id="@+id/editBebida"
-                        android:layout_width="15px"
-                        android:layout_height="50px"
-                        android:layout_marginTop="15px"
-                        android:src="@android:drawable/ic_menu_send" />
-
-                    <TextView
-                        android:text="Skool Beats"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        tools:padding="10dp" />
-
-                    <TextView
-                        android:text="200l"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        tools:padding="10dp" />
-
-                    <TextView
-                        android:text="R$ 200"
                         android:textAppearance="@style/TextAppearance.AppCompat"
                         android:textColor="@color/white"
                         android:textSize="14sp"

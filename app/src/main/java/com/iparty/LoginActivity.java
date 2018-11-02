@@ -61,11 +61,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         this.viewHolder.buttonLogin = findViewById(R.id.button_login);
         this.viewHolder.textRegister = findViewById(R.id.text_register);
         this.viewHolder.textForgetPassword = findViewById(R.id.text_forget_password);
-        this.viewHolder.checkRememberMe = findViewById(R.id.check_remenber_me);
+        //this.viewHolder.checkRememberMe = findViewById(R.id.check_remenber_me);
 
         this.viewHolder.buttonLogin.setOnClickListener(this);
         this.viewHolder.textRegister.setOnClickListener(this);
-        this.viewHolder.checkRememberMe.setOnClickListener(this);
+        //this.viewHolder.checkRememberMe.setOnClickListener(this);
 
         // External log-ins
         this.facebookLogin();
@@ -163,13 +163,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         user.setEmail(email);
         user.setPassword(password);
 
-        if (viewHolder.checkRememberMe.isChecked()) {
-            Storage.set(LoginActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.TRUE.toString());
-            Storage.set(LoginActivity.this, getString(R.string.storage_iparty_email_key), user.getEmail());
-        } else {
-            Storage.set(LoginActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.FALSE.toString());
-            Storage.set(LoginActivity.this, getString(R.string.storage_iparty_email_key), "");
-        }
+        //if (viewHolder.checkRememberMe.isChecked()) {
+         //   Storage.set(LoginActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.TRUE.toString());
+           // Storage.set(LoginActivity.this, getString(R.string.storage_iparty_email_key), user.getEmail());
+        //} else {
+         //   Storage.set(LoginActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.FALSE.toString());
+          //  Storage.set(LoginActivity.this, getString(R.string.storage_iparty_email_key), "");
+        //}
 
         Call<Token> call = authApi.login(user);
         call.enqueue(new Callback<Token>() {

@@ -6,9 +6,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.iparty.R;
+import com.iparty.model.Bebida;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BebidasActivity extends AppCompatActivity {
 
+    List<Bebida> bebidas = new ArrayList<Bebida>();
     EditText quantidadeDeAdultos;
     EditText quantidadeDeCriancas;
 

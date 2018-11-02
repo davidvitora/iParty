@@ -28,6 +28,12 @@
         <activity
             android:name=".HomeActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".BebidasActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".CadastroBebidaActivity"
+            android:exported="true"></activity>
 
         <!-- Facebook -->
         <meta-data

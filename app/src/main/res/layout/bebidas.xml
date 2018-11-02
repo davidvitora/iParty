@@ -176,7 +176,7 @@
                 <TableRow
                     android:divider="@color/white"
                     android:gravity="center_horizontal"
-                    android:padding="10"
+                    android:padding="10px"
                     android:showDividers="middle">
 
                     <ImageView
