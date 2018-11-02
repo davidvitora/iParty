@@ -2,8 +2,11 @@ package com.iparty;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +26,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -55,30 +59,11 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
         this.viewHolder.profileImage = findViewById(R.id.profileImage);
 
         final String token = Storage.get(PictureActivity.this, getString(R.string.storage_iparty_token_key));
-
-        Call<User> call = userApi.getUser(token);
-
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.code() == HttpURLConnection.HTTP_OK) {
-                    user = response.body();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(PictureActivity.this, R.string.server_error, Toast.LENGTH_LONG).show();
-            }
-        });
+        final int id_user = Integer.parseInt(Storage.get(PictureActivity.this, "id_user"));
+        Picasso.get().load(Globals.BUCKET_URL + id_user + Globals.FILE_EXTENSION).into(viewHolder.profileImage);
 
         this.viewHolder.setPicture.setOnClickListener(this);
         this.viewHolder.profileImage.setOnClickListener(this);
-        //async aqui
-        //Picasso.get().load(Globals.BUCKET_URL  + user.getId() + Globals.FILE_EXTENSION).into(viewHolder.profileImage);
-
-
     }
 
     @Override
@@ -91,22 +76,27 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
             }
             Uri uri = data.getData();
             System.out.println(uri);
-            this.viewHolder.profileImage.setImageURI(uri);
             String token = Storage.get(PictureActivity.this, getString(R.string.storage_iparty_token_key));
-            System.out.println(token);
-            File upFile = new File(uri.getPath());
-            System.out.println(getContentResolver().getType(uri));
+
+
+            File upFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/a.png");
+            this.viewHolder.profileImage.setImageURI(uri);
+
             RequestBody reqFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), upFile);
-            System.out.println(reqFile.toString());
-            RequestBody description = RequestBody.create(okhttp3.MultipartBody.FORM, "dirce");
-            MultipartBody.Part body = MultipartBody.Part.createFormData("file", upFile.getName(), reqFile);
+
+
+            RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), "file");
+
+            MultipartBody.Part body = MultipartBody.Part.createFormData(upFile.getName(), upFile.getName(), reqFile);
+
+
             Call<ResponseBody> call = userApi.setImage(description, body, token);
 
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     // Do Something
-                    System.out.println("é a nova era, petista");
+                    System.out.println("saddsfsd");
                 }
 
                 @Override
@@ -116,6 +106,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
             });
         }
     }
+
 
     @Override
     public void onClick(View view) {

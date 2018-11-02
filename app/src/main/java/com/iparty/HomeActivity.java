@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     System.out.println(user);
                     viewHolder.txtvNomeUsuario.setText(user.getName());
                     Picasso.get().load(Globals.BUCKET_URL  + user.getId() + Globals.FILE_EXTENSION).into(viewHolder.userPicture);
-
+                    Storage.set(HomeActivity.this, "id_user", ""+user.getId());
                 }
             }
 
