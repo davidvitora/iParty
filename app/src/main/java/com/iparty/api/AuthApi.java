@@ -4,6 +4,7 @@ import com.iparty.api.interfaces.Auth;
 import com.iparty.api.interfaces.StaticRetrofit;
 import com.iparty.model.Token;
 import com.iparty.model.User;
+import com.iparty.model.ForgetPassword;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,4 +35,18 @@ public class AuthApi {
         call.enqueue(callback);
     }
 
+    public void forgetPassword(User user, Callback<Token> callback){
+        Call<Token> call = auth.forgetPassword(user);
+        call.enqueue(callback);
+    }
+
+    public void validateCode(ForgetPassword forgetPassword, Callback<Void> callback){
+        Call<Void> call = auth.validateCode(forgetPassword);
+        call.enqueue(callback);
+    }
+
+    public void changePassword(ForgetPassword forgetPassword, Callback<Void> callback){
+        Call<Void> call = auth.changePassword(forgetPassword);
+        call.enqueue(callback);
+    }
 }

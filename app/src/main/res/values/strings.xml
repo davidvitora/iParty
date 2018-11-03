@@ -34,8 +34,20 @@
     <string name="storage_iparty_email_key">email</string>
     <string name="login_checkbox_remember_me">Lembrar-me</string>
     <string name="title_activity_forget_password">forget_password</string>
+    <string name="title_activity_forget_password_code">forget_password_code</string>
+    <string name="title_activity_change_password">title_activity_change_password</string>
     <string name="forget_password_label">Recuperar senha</string>
     <string name="forget_password_button_send_email">Enviar</string>
+    <string name="forget_password_send_email_success">E-mail enviado com sucesso.</string>
+    <string name="forget_password_code_validade_code">Verificar código</string>
+    <string name="change_password_change_password_label">Alterar senha</string>
+    <string name="change_password_button_change">Alterar</string>
+    <string name="forget_password_email_not_found">Nenhuma conta cadastrada com este e-mail</string>
+    <string name="global_empty_string" />
+    <string name="forget_password_code_invalid_code">Código incorreto.</string>
+    <string name="change_password_success">Senha alterada com sucesso.</string>
+    <string name="forget_password_code_insert_the_number">Insira o número</string>
+    <string name="forget_password_code_number_hint">0</string>
 
 
 </resources>

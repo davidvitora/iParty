@@ -61,6 +61,7 @@ public class LoginActivity extends BaseActivity {
 
         this.viewHolder.buttonLogin.setOnClickListener(this);
         this.viewHolder.textRegister.setOnClickListener(this);
+        this.viewHolder.textForgetPassword.setOnClickListener(this);
         this.viewHolder.checkRememberMe.setOnClickListener(this);
 
         // External log-ins

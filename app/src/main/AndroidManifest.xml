@@ -29,9 +29,17 @@
             android:name=".CadastroFestaActivity"
             android:exported="true" />
         <activity
+            android:name=".ForgetPassword"
+            android:label="@string/title_activity_forget_password"></activity>
+        <activity
+            android:name=".ForgetPasswordCode"
+            android:label="@string/title_activity_forget_password_code"></activity>
+        <activity
+            android:name=".ChangePassword"
+            android:label="@string/title_activity_change_password"></activity>
+        <activity
             android:name=".HomeActivity"
             android:exported="true" />
-
         <!-- Facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -54,12 +62,6 @@
             </intent-filter>
         </activity>
         <!-- End Facebook -->
-        <activity
-            android:name=".forget_password"
-            android:label="@string/title_activity_forget_password" />
-        <activity
-            android:name=".ForgetPassword"
-            android:label="@string/title_activity_forget_password"></activity>
     </application>
 
 </manifest>
