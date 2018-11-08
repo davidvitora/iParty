@@ -15,8 +15,8 @@ import retrofit2.http.POST;
 public interface AuthApi {
 
     Retrofit RETROFIT = new Retrofit.Builder()
-            .baseUrl("https://iparty-server.herokuapp.com/")
-            //.baseUrl("http://192.168.0.107:3000/")
+            .baseUrl("http://9f94b2b9.ngrok.io/")
+            //.baseUrl("http://172.23.8.121:3000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
