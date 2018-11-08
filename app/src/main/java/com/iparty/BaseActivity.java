@@ -32,6 +32,12 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         startActivity(intent);
     }
 
+    protected void cleanAndGoTo(Class<?> toActivity) {
+        Intent intent = new Intent(this, toActivity);
+        intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
+        startActivity(intent);
+    }
+
     protected void serverError(){
         Toast.makeText(this, R.string.server_error, Toast.LENGTH_LONG).show();
     }

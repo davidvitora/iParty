@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
-import android.text.method.KeyListener;
-import android.view.KeyEvent;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iparty.api.AuthApi;
@@ -57,6 +54,7 @@ public class ForgetPasswordCode extends BaseActivity {
         this.viewHolder.buttonValidateCode = findViewById(R.id.button_validate_code);
 
         this.viewHolder.buttonValidateCode.setOnClickListener(this);
+        this.insertEventsForKeepBetweenButtons();
     }
 
     @Override
@@ -71,6 +69,7 @@ public class ForgetPasswordCode extends BaseActivity {
                 break;
         }
     }
+
 
     private boolean validateFields(){
         if (TextUtils.isEmpty(this.viewHolder.editNumber1.getText().toString())){
@@ -133,5 +132,75 @@ public class ForgetPasswordCode extends BaseActivity {
         String number4 = this.viewHolder.editNumber4.getText().toString();
         String number5 = this.viewHolder.editNumber5.getText().toString();
         return Integer.parseInt(number1.concat(number2).concat(number3).concat(number4).concat(number5));
+    }
+    
+    private void insertEventsForKeepBetweenButtons(){
+        this.viewHolder.editNumber1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewHolder.editNumber2.requestFocus();
+            }
+        });
+
+        this.viewHolder.editNumber2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewHolder.editNumber3.requestFocus();
+            }
+        });
+
+        this.viewHolder.editNumber3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewHolder.editNumber4.requestFocus();
+            }
+        });
+
+        this.viewHolder.editNumber4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewHolder.editNumber5.requestFocus();
+            }
+        });
     }
 }

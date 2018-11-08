@@ -98,7 +98,7 @@ public class ChangePassword extends BaseActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response){
                 dismissProgressDialog(progressDialog);
-                if (response.code() == HttpURLConnection.HTTP_CREATED){
+                if (response.code() == HttpURLConnection.HTTP_OK){
                     alertSuccess();
                 } else {
                     error(response.errorBody().toString());
@@ -120,7 +120,7 @@ public class ChangePassword extends BaseActivity {
         builder.setNeutralButton(R.string.alert_dialog_button_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
+                cleanAndGoTo(LoginActivity.class);
             }
         });
         builder.create().show();
