@@ -15,7 +15,7 @@ public enum Festa {
         this.descricao = descricao;
     }
 
-    public int getCodigo() {
+    public  int getCodigo() {
         return codigo;
     }
 
@@ -23,7 +23,7 @@ public enum Festa {
         return descricao;
     }
 
-    public static Festa toEnum(Integer cod) {
+    public static Festa toEnum(Festa cod) {
         if(cod == null)
             return null;
         for(Festa x: Festa.values()) {

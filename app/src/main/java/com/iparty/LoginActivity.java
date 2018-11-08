@@ -175,6 +175,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         call.enqueue(new Callback<Token>() {
             @Override
             public void onResponse(Call<Token> call, Response<Token> response) {
+                Intent itLogin = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(itLogin);
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
                     if (response.code() == HttpURLConnection.HTTP_OK) {

@@ -55,7 +55,7 @@
 
             <EditText
                 android:id="@+id/edit_mail"
-                android:text="wesley@safadao.com"
+                android:text="asd@asd.com"
                 android:layout_width="270dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
@@ -69,7 +69,7 @@
 
             <EditText
                 android:id="@+id/edit_password"
-                android:text="wesley"
+                android:text="123"
                 android:layout_width="270dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"

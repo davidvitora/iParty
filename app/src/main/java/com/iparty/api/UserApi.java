@@ -17,8 +17,8 @@ import retrofit2.http.Part;
 public interface UserApi {
 
     Retrofit RETROFIT = new Retrofit.Builder()
-            .baseUrl("https://iparty-server.herokuapp.com/")
-            //.baseUrl("http://192.168.0.107:3000/")
+            //.baseUrl("https://iparty-server.herokuapp.com/")
+            .baseUrl("http://192.168.0.107:3000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
@@ -27,5 +27,5 @@ public interface UserApi {
 
     @Multipart
     @POST("api/upload")
-    Call<ResponseBody> setImage(@Part("description") RequestBody description, @Part MultipartBody.Part file, @Header("Authrization") String authrization);
+    Call<ResponseBody> setImage(@Part("file") RequestBody description, @Part MultipartBody.Part file, @Header("Authrization") String authrization);
 }

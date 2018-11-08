@@ -1,5 +1,8 @@
 package com.iparty.model;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import java.io.Serializable;
 
 /**
@@ -7,12 +10,12 @@ import java.io.Serializable;
  */
 public class User {
 
+
     private int id;
     private String name;
     private String email;
     private String password;
     private String confirmPassword;
-    private String imgSrc;
 
     public int getId() {
         return id;
@@ -52,8 +55,12 @@ public class User {
 
     public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
 
-    public String getImgSrc() { return imgSrc; }
-
-    public void setImgSrc(String imgSrc) { this.imgSrc = imgSrc; }
+    public JsonObject getJson() {
+        JsonObject json = new JsonObject();
+        json.addProperty("id", this.id);
+        json.addProperty("name", this.name);
+        json.addProperty("email", this.email);
+        return json;
+    }
 
 }
