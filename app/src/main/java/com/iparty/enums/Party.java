@@ -1,7 +1,7 @@
 package com.iparty.enums;
 
 
-public enum Festa {
+public enum Party {
     ANIVERSARIO(1, "Aniversario"),
     QUINZEANOS(2, "15 Anos"),
     CASAMENTO(3, "Casamento");
@@ -10,7 +10,7 @@ public enum Festa {
     private int codigo;
     private String descricao;
 
-    private Festa(int codigo, String descricao) {
+    Party(int codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -23,10 +23,10 @@ public enum Festa {
         return descricao;
     }
 
-    public static Festa toEnum(Festa cod) {
+    public static Party toEnum(Party cod) {
         if(cod == null)
             return null;
-        for(Festa x: Festa.values()) {
+        for(Party x: Party.values()) {
             if(cod.equals(x.getCodigo()))
                 return x;
         }

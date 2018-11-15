@@ -31,7 +31,7 @@
             android:orientation="horizontal"
             style="?android:attr/listSeparatorTextViewStyle">
             <ImageView
-                android:id="@+id/userPicture"
+                android:id="@+id/imageUserPicture"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:src="@drawable/picture"
@@ -39,7 +39,7 @@
                 android:layout_marginLeft="60dp"
                 android:padding="10dp"/>
             <TextView
-                android:id="@+id/txtvNomeUsuario"
+                android:id="@+id/textUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Eduardo Zacarim"
@@ -265,7 +265,7 @@
             android:textColor="@color/white"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/btnCriarEvento"
+        android:id="@+id/linearCreateEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="?android:attr/listSeparatorTextViewStyle"

@@ -1,6 +1,6 @@
 package com.iparty.model;
 
-import com.iparty.enums.Festa;
+import com.iparty.enums.Party;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,7 +9,7 @@ public class Evento {
     private int id;
     private String titulo;
     private Date data;
-    private Festa tipo;
+    private Party tipo;
     private String endereço;
     private Double valor;
     private String aniversariante;
@@ -17,7 +17,7 @@ public class Evento {
     private String noivo;
     private ArrayList<Convidado> convidados;
 
-    public Evento(int id, String titulo, Date data, Festa tipo, String endereço, Double valor) {
+    public Evento(int id, String titulo, Date data, Party tipo, String endereço, Double valor) {
         this.id = id;
         this.titulo = titulo;
         this.data = data;
@@ -51,11 +51,11 @@ public class Evento {
         this.data = data;
     }
 
-    public Festa getTipo() {
+    public Party getTipo() {
         return tipo;
     }
 
-    public void setTipo(Festa tipo) {
+    public void setTipo(Party tipo) {
         this.tipo = tipo;
     }
 
