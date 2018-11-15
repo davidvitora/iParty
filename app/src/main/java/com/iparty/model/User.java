@@ -1,9 +1,15 @@
 package com.iparty.model;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import java.io.Serializable;
+
 /**
  * Created by Maurício Generoso on 18/10/2018
  */
 public class User {
+
 
     private int id;
     private String name;
@@ -47,7 +53,14 @@ public class User {
         return confirmPassword;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
+    public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
+
+    public JsonObject getJson() {
+        JsonObject json = new JsonObject();
+        json.addProperty("id", this.id);
+        json.addProperty("name", this.name);
+        json.addProperty("email", this.email);
+        return json;
     }
+
 }

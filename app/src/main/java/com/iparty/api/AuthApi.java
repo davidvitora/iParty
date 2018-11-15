@@ -1,6 +1,6 @@
 package com.iparty.api;
 
-import com.iparty.api.interfaces.Auth;
+import com.iparty.api.interfaces.AuthInterface;
 import com.iparty.api.interfaces.StaticRetrofit;
 import com.iparty.model.Token;
 import com.iparty.model.User;
@@ -14,10 +14,10 @@ import retrofit2.Callback;
  */
 public class AuthApi {
 
-    private final Auth auth;
+    private final AuthInterface auth;
 
     public AuthApi(){
-        this.auth = StaticRetrofit.RETROFIT.create(Auth.class);
+        this.auth = StaticRetrofit.RETROFIT.create(AuthInterface.class);
     }
 
     public void login(User user, Callback<Token> callback){

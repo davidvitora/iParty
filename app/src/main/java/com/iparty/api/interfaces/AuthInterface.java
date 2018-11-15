@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 /**
  * Created by Maurício Generoso on 18/10/2018
  */
-public interface Auth {
+public interface AuthInterface {
 
     @POST("api/login")
     Call<Token> login(@Body User user);
