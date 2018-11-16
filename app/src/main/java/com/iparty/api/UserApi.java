@@ -2,12 +2,10 @@ package com.iparty.api;
 
 import android.content.Context;
 
-import com.iparty.HomeActivity;
 import com.iparty.R;
 import com.iparty.Utilities.Storage;
 import com.iparty.api.interfaces.StaticRetrofit;
 import com.iparty.api.interfaces.UserInterface;
-import com.iparty.model.Token;
 import com.iparty.model.User;
 
 import okhttp3.MultipartBody;

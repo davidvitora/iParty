@@ -1,4 +1,4 @@
-package com.iparty;
+package com.iparty.activities.common;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+
+import com.iparty.R;
 
 /**
  * Created by Maurício Generoso on 11/2/2018

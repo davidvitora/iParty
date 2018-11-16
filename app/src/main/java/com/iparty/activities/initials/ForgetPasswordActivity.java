@@ -1,4 +1,4 @@
-package com.iparty;
+package com.iparty.activities.initials;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.iparty.activities.common.BaseActivity;
+import com.iparty.R;
 import com.iparty.api.AuthApi;
 import com.iparty.model.Token;
 import com.iparty.model.User;
@@ -22,7 +24,7 @@ import retrofit2.Response;
 /**
  * Created by Maurício Generoso on 10/18/2018
  */
-public class ForgetPassword extends BaseActivity {
+public class ForgetPasswordActivity extends BaseActivity {
 
     private static class ViewHolder {
         EditText editEmail;
@@ -77,12 +79,12 @@ public class ForgetPassword extends BaseActivity {
             public void onResponse(Call<Token> call, Response<Token> response){
                 dismissProgressDialog(progressDialog);
                 if (response.code() == HttpURLConnection.HTTP_OK){
-                    Intent intent = new Intent(ForgetPassword.this, ForgetPasswordCode.class);
+                    Intent intent = new Intent(ForgetPasswordActivity.this, ForgetPasswordCodeActivity.class);
                     intent.putExtra("token", response.body().getToken());
                     intent.putExtra("email", viewHolder.editEmail.getText().toString());
                     startActivity(intent);
                 } else if (response.code() == HttpURLConnection.HTTP_NOT_FOUND){
-                    Toast.makeText(ForgetPassword.this, R.string.forget_password_email_not_found, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ForgetPasswordActivity.this, R.string.forget_password_email_not_found, Toast.LENGTH_LONG).show();
                 } else {
                     error(response.errorBody().toString());
                 }

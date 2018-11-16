@@ -1,4 +1,4 @@
-package com.iparty;
+package com.iparty.activities.initials;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.iparty.activities.common.BaseActivity;
+import com.iparty.R;
 import com.iparty.api.AuthApi;
 import com.iparty.model.ForgetPassword;
 
@@ -23,7 +25,7 @@ import retrofit2.Response;
 /**
  * Created by Maurício Generoso on 11/2/2018
  */
-public class ForgetPasswordCode extends BaseActivity {
+public class ForgetPasswordCodeActivity extends BaseActivity {
 
     private static class ViewHolder {
         EditText editNumber1;
@@ -106,13 +108,13 @@ public class ForgetPasswordCode extends BaseActivity {
             public void onResponse(Call<Void> call, Response<Void> response){
                 dismissProgressDialog(progressDialog);
                 if (response.code() == HttpURLConnection.HTTP_OK){
-                    Intent intent = new Intent(ForgetPasswordCode.this, ChangePassword.class);
+                    Intent intent = new Intent(ForgetPasswordCodeActivity.this, ChangePasswordActivity.class);
                     intent.putExtra("token", bundle.getString("token"));
                     intent.putExtra("email", bundle.getString("email"));
                     intent.putExtra("code", getCode());
                     startActivity(intent);
                 } else if (response.code() == HttpURLConnection.HTTP_BAD_REQUEST){
-                    Toast.makeText(ForgetPasswordCode.this, R.string.forget_password_code_invalid_code, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ForgetPasswordCodeActivity.this, R.string.forget_password_code_invalid_code, Toast.LENGTH_LONG).show();
                 } else {
                     error(response.errorBody().toString());
                 }

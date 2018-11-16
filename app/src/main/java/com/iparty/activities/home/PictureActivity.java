@@ -1,4 +1,4 @@
-package com.iparty;
+package com.iparty.activities.home;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,20 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iparty.Utilities.Globals;
+import com.iparty.R;
 import com.iparty.Utilities.Storage;
-import com.iparty.api.AuthApi;
 import com.iparty.api.UserApi;
 import com.iparty.model.User;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 
 import okhttp3.MediaType;

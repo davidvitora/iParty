@@ -1,4 +1,4 @@
-package com.iparty;
+package com.iparty.activities.home;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,9 +7,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iparty.activities.party.CreatePartyActivity;
+import com.iparty.R;
 import com.iparty.Utilities.Globals;
 import com.iparty.api.UserApi;
 import com.iparty.model.User;
+import com.iparty.activities.common.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 import java.net.HttpURLConnection;

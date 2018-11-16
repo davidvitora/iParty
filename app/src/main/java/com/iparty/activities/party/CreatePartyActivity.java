@@ -1,4 +1,4 @@
-package com.iparty;
+package com.iparty.activities.party;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.iparty.R;
 import com.iparty.enums.Party;
+import com.iparty.activities.common.BaseActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
