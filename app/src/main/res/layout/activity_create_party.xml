@@ -2,8 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,6 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6pt"
                 android:text="Cadastro de nova festa"
                 android:textSize="6pt"
                 android:textColor="@color/colorText"
@@ -42,18 +42,27 @@
             android:orientation="horizontal"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nome :"
-                android:textSize="8pt"
-                android:textColor="@color/colorText"
-                />
-            <EditText
-                android:id="@+id/txtNome"
-                android:layout_width="100pt"
-                android:layout_height="wrap_content" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="85pt"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/txtNome"
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Título"
+                    android:nextFocusDown="@id/txtData"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/txtData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Data"
+                    android:inputType="date"/>
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,7 +74,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tipo :"
+                android:text="Tipo"
                 android:textSize="8pt"
                 android:textColor="@color/colorText"
                 />
@@ -82,8 +91,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <RelativeLayout
+                    android:id="@+id/rlFestaAniversario"
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" >
@@ -98,14 +107,21 @@
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:background="@color/colorTransparent"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorPrimary"
                         android:gravity="center"
-                        android:text="FESTA DE ANIVERSÁRIO"
-                        android:textColor="#fff"
-                        android:background="@color/colorPrimary"/>
+                        android:text="Festa de Aniversário"
+                        android:textAllCaps="true"
+                        android:textColor="#fff" />
                     <ImageView
                         android:id="@+id/checkAniversario"
                         android:visibility="visible"
@@ -115,6 +131,7 @@
                         android:src="@drawable/check"/>
                 </RelativeLayout>
                 <RelativeLayout
+                    android:id="@+id/rl15Anos"
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" >
@@ -134,7 +151,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:gravity="center"
-                        android:text="FESTA DE 15 ANOS"
+                        android:text="Festa de 15 Anos"
+                        android:textAllCaps="true"
                         android:textColor="#fff"
                         android:background="@color/colorPrimary"/>
                     <ImageView
@@ -146,6 +164,7 @@
                         android:src="@drawable/check"/>
                 </RelativeLayout>
                 <RelativeLayout
+                    android:id="@+id/rlCasamento"
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" >
@@ -165,7 +184,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:gravity="center"
-                        android:text="FESTA DE CASAMENTO"
+                        android:text="Festa de Casamento"
+                        android:textAllCaps="true"
                         android:textColor="#fff"
                         android:background="@color/colorPrimary"/>
                     <ImageView
@@ -178,85 +198,71 @@
                 </RelativeLayout>
             </LinearLayout>
         </HorizontalScrollView>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aniversariante :"
-                android:textSize="8pt"
-                android:textColor="@color/colorText"
-                />
-            <EditText
-                android:id="@+id/txtAniversariante"
-                android:layout_width="100pt"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Noivo :"
-                android:textSize="8pt"
-                android:textColor="@color/colorText"
-                />
-            <EditText
-                android:id="@+id/txtNoivo"
-                android:layout_width="100pt"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Noiva :"
-                android:textSize="8pt"
-                android:textColor="@color/colorText"
-                />
-            <EditText
-                android:id="@+id/txtNoiva"
-                android:layout_width="100pt"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/rlTxtEndereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Endereço :"
-                android:textColor="@color/colorText"
-                android:textSize="8pt" />
-
+            android:visibility="visible">
             <EditText
                 android:id="@+id/txtEndereco"
-                android:layout_width="100pt"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Endereço"
+                android:textColor="@color/colorText"
+                android:textSize="8pt"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/rlTxtAniversariante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/txtAniversariante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Aniversariante"
+                android:textColor="@color/colorText"
+                android:textSize="8pt"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/rlTxtNoivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/txtNoivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Noivo"
+                android:textColor="@color/colorText"
+                android:textSize="8pt"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/rlTxtNoiva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/txtNoiva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Noiva"
+                android:textColor="@color/colorText"
+                android:textSize="8pt"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -287,6 +293,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Comidas"/>
+            <Button
+                android:id="@+id/btnCriarNovoEvento"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="#FFFFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Criar"/>
         </LinearLayout>
 
     </LinearLayout>

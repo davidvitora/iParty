@@ -16,9 +16,13 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.iparty.Utilities.Storage;
+import com.iparty.activities.home.HomeActivity;
 import com.iparty.api.AuthApi;
 import com.iparty.model.Token;
 import com.iparty.model.User;
+import com.iparty.activities.common.BaseActivity;
+import com.iparty.activities.initials.ForgetPasswordActivity;
+import com.iparty.activities.initials.RegisterActivity;
 
 import java.net.HttpURLConnection;
 
@@ -26,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends BaseActivity {
+public class MainActivity extends BaseActivity {
 
     private static class ViewHolder {
         EditText editEmail;
@@ -46,9 +50,9 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.activity_login);
+        this.setContentView(R.layout.activity_main);
 
-        this.progressDialog = new ProgressDialog(LoginActivity.this);
+        this.progressDialog = new ProgressDialog(MainActivity.this);
 
         this.authApi = new AuthApi();
 
@@ -61,7 +65,8 @@ public class LoginActivity extends BaseActivity {
 
         this.viewHolder.buttonLogin.setOnClickListener(this);
         this.viewHolder.textRegister.setOnClickListener(this);
-        //this.viewHolder.checkRememberMe.setOnClickListener(this);
+        this.viewHolder.textForgetPassword.setOnClickListener(this);
+        this.viewHolder.checkRememberMe.setOnClickListener(this);
 
         // External log-ins
         this.facebookLogin();
@@ -81,7 +86,7 @@ public class LoginActivity extends BaseActivity {
                 goTo(RegisterActivity.class);
                 break;
             case R.id.text_forget_password:
-                goTo(ForgetPassword.class);
+                goTo(ForgetPasswordActivity.class);
                 break;
         }
     }
@@ -99,7 +104,7 @@ public class LoginActivity extends BaseActivity {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        Toast.makeText(LoginActivity.this, "Login com sucesso", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Login com sucesso", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -108,17 +113,17 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onError(FacebookException exception) {
-                        Toast.makeText(LoginActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
     private void verifyIfIsAlreadyConnected() {
-        boolean remember = new Boolean(Storage.get(LoginActivity.this, getString(R.string.storage_iparty_remember_key)));
+        boolean remember = new Boolean(Storage.get(MainActivity.this, getString(R.string.storage_iparty_remember_key)));
 
         if (remember) {
             showProgressDialog(progressDialog);
-            String tokenString = Storage.get(LoginActivity.this, getString(R.string.storage_iparty_token_key));
+            String tokenString = Storage.get(MainActivity.this, getString(R.string.storage_iparty_token_key));
             if (tokenString != null && !tokenString.equals("")) {
                 authApi.validateToken(new Token(tokenString), new Callback<Void>() {
                     @Override
@@ -127,7 +132,7 @@ public class LoginActivity extends BaseActivity {
                         if (response.code() == HttpURLConnection.HTTP_OK) {
                             goTo(HomeActivity.class);
                         } else if (response.code() == HttpURLConnection.HTTP_BAD_REQUEST) {
-                            viewHolder.editEmail.setText(Storage.get(LoginActivity.this, getString(R.string.storage_iparty_email_key)));
+                            viewHolder.editEmail.setText(Storage.get(MainActivity.this, getString(R.string.storage_iparty_email_key)));
                         }
                     }
 
@@ -150,13 +155,13 @@ public class LoginActivity extends BaseActivity {
         user.setEmail(email);
         user.setPassword(password);
 
-        //if (viewHolder.checkRememberMe.isChecked()) {
-         //   Storage.set(LoginActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.TRUE.toString());
-           // Storage.set(LoginActivity.this, getString(R.string.storage_iparty_email_key), user.getEmail());
-        //} else {
-         //   Storage.set(LoginActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.FALSE.toString());
-          //  Storage.set(LoginActivity.this, getString(R.string.storage_iparty_email_key), "");
-        //}
+        if (viewHolder.checkRememberMe.isChecked()) {
+            Storage.set(MainActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.TRUE.toString());
+            Storage.set(MainActivity.this, getString(R.string.storage_iparty_email_key), user.getEmail());
+        } else {
+            Storage.set(MainActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.FALSE.toString());
+            Storage.set(MainActivity.this, getString(R.string.storage_iparty_email_key), "");
+        }
 
         authApi.login(user, new Callback<Token>() {
             @Override
@@ -164,10 +169,10 @@ public class LoginActivity extends BaseActivity {
                 dismissProgressDialog(progressDialog);
                 if (response.code() == HttpURLConnection.HTTP_OK) {
                     Token token = response.body();
-                    Storage.set(LoginActivity.this, getString(R.string.storage_iparty_token_key), token.getToken());
+                    Storage.set(MainActivity.this, getString(R.string.storage_iparty_token_key), token.getToken());
                     goTo(HomeActivity.class);
                 } else if (response.code() == HttpURLConnection.HTTP_UNAUTHORIZED) {
-                    Toast.makeText(LoginActivity.this, R.string.login_invalid_email_password, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.login_invalid_email_password, Toast.LENGTH_LONG).show();
                 } else {
                     error(response.errorBody().toString());
                 }

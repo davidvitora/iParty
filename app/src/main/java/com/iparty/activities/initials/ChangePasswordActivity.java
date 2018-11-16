@@ -1,4 +1,4 @@
-package com.iparty;
+package com.iparty.activities.initials;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.iparty.activities.common.BaseActivity;
+import com.iparty.MainActivity;
+import com.iparty.R;
 import com.iparty.api.AuthApi;
-import com.iparty.model.User;
+import com.iparty.model.ForgetPassword;
 
 import java.net.HttpURLConnection;
 
@@ -18,57 +21,49 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterActivity extends BaseActivity {
+/**
+ * Created by Maurício Generoso on 11/2/2018
+ */
+public class ChangePasswordActivity extends BaseActivity {
 
     private static class ViewHolder {
-        private EditText editUsername;
-        private EditText editPassword;
-        private EditText editConfirmPassword;
-        private EditText editEmail;
-        private Button buttonCreateAccount;
+        EditText editPassword;
+        EditText editConfirmPassword ;
+        Button buttonChangePassword;
     }
 
     private ViewHolder viewHolder = new ViewHolder();
     private ProgressDialog progressDialog;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_change_password);
 
-        progressDialog = new ProgressDialog(RegisterActivity.this);
+        this.progressDialog = new ProgressDialog(this);
+        this.bundle = getIntent().getExtras();
 
-        this.viewHolder.editUsername = findViewById(R.id.edit_username);
         this.viewHolder.editPassword = findViewById(R.id.edit_password);
         this.viewHolder.editConfirmPassword = findViewById(R.id.edit_confirm_password);
-        this.viewHolder.editEmail = findViewById(R.id.edit_mail);
-        this.viewHolder.buttonCreateAccount = findViewById(R.id.button_create_account);
+        this.viewHolder.buttonChangePassword = findViewById(R.id.button_change_password);
 
-        this.viewHolder.buttonCreateAccount.setOnClickListener(this);
+        this.viewHolder.buttonChangePassword.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View view) {
-        int id = view.getId();
+    public void onClick(View v) {
+        int id = v.getId();
 
-        switch (id) {
-            case R.id.button_create_account:
-                if (validateFields()){
-                    createNewAccount();
-                }
+        switch (id){
+            case R.id.button_change_password:
+                if (validateFields())
+                saveNewPassword();
                 break;
         }
     }
 
     private boolean validateFields() {
-        if (TextUtils.isEmpty(this.viewHolder.editUsername.getText().toString())) {
-            this.viewHolder.editUsername.setError(getString(R.string.edit_text_error_message_insert_user));
-            return false;
-        }
-        if (TextUtils.isEmpty(this.viewHolder.editEmail.getText().toString())) {
-            this.viewHolder.editEmail.setError(getString(R.string.edit_text_error_message_insert_email));
-            return false;
-        }
         if (TextUtils.isEmpty(this.viewHolder.editPassword.getText().toString())) {
             this.viewHolder.editPassword.setError(getString(R.string.edit_text_error_message_insert_password));
             return false;
@@ -89,20 +84,24 @@ public class RegisterActivity extends BaseActivity {
                 .equals(this.viewHolder.editConfirmPassword.getText().toString());
     }
 
-    private void createNewAccount(){
+    private void saveNewPassword(){
         showProgressDialog(progressDialog);
 
-        User user = new User();
-        user.setName(this.viewHolder.editUsername.getText().toString());
-        user.setEmail(this.viewHolder.editEmail.getText().toString());
-        user.setPassword(this.viewHolder.editPassword.getText().toString());
-        user.setConfirmPassword(this.viewHolder.editConfirmPassword.getText().toString());
+        String strToken = bundle.getString("token");
+        String strEmail = bundle.getString("email");
+        int code = bundle.getInt("code");
 
-        new AuthApi().signup(user, new Callback<Void>() {
+        ForgetPassword forgetPassword =
+                new ForgetPassword(
+                        strToken, strEmail, code,
+                        this.viewHolder.editPassword.getText().toString(),
+                        this.viewHolder.editConfirmPassword.getText().toString());
+
+        new AuthApi().changePassword(forgetPassword, new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response){
                 dismissProgressDialog(progressDialog);
-                if (response.code() == HttpURLConnection.HTTP_CREATED){
+                if (response.code() == HttpURLConnection.HTTP_OK){
                     alertSuccess();
                 } else {
                     error(response.errorBody().toString());
@@ -119,12 +118,12 @@ public class RegisterActivity extends BaseActivity {
     private void alertSuccess(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.alert_dialog_success);
-        builder.setMessage(R.string.alert_dialog_success_message);
+        builder.setMessage(R.string.change_password_success);
         builder.setCancelable(false);
         builder.setNeutralButton(R.string.alert_dialog_button_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
+                cleanAndGoTo(MainActivity.class);
             }
         });
         builder.create().show();
