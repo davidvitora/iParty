@@ -13,6 +13,13 @@ public class Bebida {
         this.quantiodade_por_pessoa = 1.0f;
     }
 
+    public Bebida(String nome, Float preco_por_litro, boolean alcoolica, Float quantiodade_por_pessoa) {
+        this.nome = nome;
+        this.preco_por_litro = preco_por_litro;
+        this.alcoolica = alcoolica;
+        this.quantiodade_por_pessoa = quantiodade_por_pessoa;
+    }
+
     public String getNome() {
         return nome;
     }

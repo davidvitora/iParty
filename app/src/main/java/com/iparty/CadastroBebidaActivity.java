@@ -1,25 +1,41 @@
 package com.iparty;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iparty.R;
+import com.iparty.Utilities.Numeric;
 import com.iparty.model.Bebida;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import org.json.*;
 
-public class CadastroBebidaActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
+public class CadastroBebidaActivity extends BaseActivity {
+
+    private static WeakReference<Activity> referenciaBebidas;
+    public static void updateActivity(Activity activity) {
+        referenciaBebidas = new WeakReference<Activity>(activity);
+    }
 
     ArrayList<Bebida> bebidas_precadastradas = new ArrayList<>();
     EditText nomeBebida;
@@ -27,6 +43,8 @@ public class CadastroBebidaActivity extends AppCompatActivity {
     EditText quantidadePorPessoa;
     CheckBox checkAlcoolico;
     TableLayout listBebidasPrecadastradas;
+    Button btnCancelar;
+    Button btnOKBebida;
 
     protected void addBebidasPrecadastradasNaTela(Bebida bebida, TableLayout table){
         TableRow tr = new TableRow(this);
@@ -91,6 +109,8 @@ public class CadastroBebidaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro_bebida);
+        btnCancelar = (Button) findViewById(R.id.btnCancelarBebida);
+        btnOKBebida = (Button) findViewById(R.id.btnOKBebida);
         nomeBebida = (EditText) findViewById(R.id.txtNomeBebida);
         precoPorLitro = (EditText) findViewById(R.id.txtPrecoPorLitro);
         quantidadePorPessoa = (EditText) findViewById(R.id.txtQuantidadePorPessoa);
@@ -104,5 +124,51 @@ public class CadastroBebidaActivity extends AppCompatActivity {
             this.addBebidasPrecadastradasNaTela(bebida, listBebidasPrecadastradas);
         }
 
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(BebidasActivity.class);
+            }
+        });
+
+        btnOKBebida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(nomeBebida.getText().length() > 3 && Numeric.isNumeric(precoPorLitro.getText().toString())
+                        && Numeric.isNumeric(quantidadePorPessoa.getText().toString())) {
+                    try {
+                        SharedPreferences preferences =
+                                PreferenceManager.getDefaultSharedPreferences(CadastroBebidaActivity.this);
+                        JSONArray listaBebidasJSON;
+
+                        listaBebidasJSON = new JSONArray(preferences.getString("bebidas_salvas", "[]"));
+                        JSONObject bebidaJSON = new JSONObject();
+                        bebidaJSON.put("nome", nomeBebida.getText().toString());
+                        bebidaJSON.put("preco_por_litro", precoPorLitro.getText().toString());
+                        if (checkAlcoolico.isChecked() == true) {
+                            bebidaJSON.put("alcoolica", "true");
+                        } else {
+                            bebidaJSON.put("alcoolica", "false");
+                        }
+                        bebidaJSON.put("quantidade_por_pessoa", quantidadePorPessoa.getText().toString());
+
+                        listaBebidasJSON.put(bebidaJSON);
+                        SharedPreferences.Editor edit = preferences.edit();
+                        edit.putString("bebidas_salvas", listaBebidasJSON.toString());
+                        edit.apply();
+                        goTo(BebidasActivity.class);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(CadastroBebidaActivity.this, "Dados invalidos", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public void onClick(View view) {
     }
 }

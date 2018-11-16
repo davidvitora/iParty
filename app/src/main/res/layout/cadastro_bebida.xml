@@ -132,14 +132,6 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:text="Cancelar"
                 android:textColor="@color/white"/>
-            <Button
-                android:id="@+id/btnDeletarBebida"
-                android:layout_marginLeft="80px"
-                android:layout_width="wrap_content"
-                android:layout_height="18pt"
-                android:backgroundTint="@color/colorPrimary"
-                android:text="Deletar"
-                android:textColor="@color/white"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
