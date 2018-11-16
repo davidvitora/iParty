@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity {
         this.viewHolder.buttonLogin = findViewById(R.id.button_login);
         this.viewHolder.textRegister = findViewById(R.id.text_register);
         this.viewHolder.textForgetPassword = findViewById(R.id.text_forget_password);
-        this.viewHolder.checkRememberMe = findViewById(R.id.check_remenber_me);
+        //this.viewHolder.checkRememberMe = findViewById(R.id.check_remenber_me);
 
         this.viewHolder.buttonLogin.setOnClickListener(this);
         this.viewHolder.textRegister.setOnClickListener(this);

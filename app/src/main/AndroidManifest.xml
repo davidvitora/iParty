@@ -66,6 +66,13 @@
             </intent-filter>
         </activity>
         <!-- End Facebook -->
+        <activity
+            android:name=".CadastroBebidaActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".BebidasActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>
