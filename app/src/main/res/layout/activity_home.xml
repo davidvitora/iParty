@@ -18,9 +18,10 @@
             android:layout_weight="1"
             />
         <ImageView
+            android:id="@+id/exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/menu"
+            android:src="@drawable/exit"
             android:layout_gravity="center" />
     </LinearLayout>
 

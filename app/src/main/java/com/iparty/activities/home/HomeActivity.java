@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iparty.MainActivity;
+import com.iparty.Utilities.Storage;
 import com.iparty.activities.party.CreatePartyActivity;
 import com.iparty.R;
 import com.iparty.Utilities.Globals;
@@ -27,6 +29,7 @@ public class HomeActivity extends BaseActivity {
         TextView textUsername;
         LinearLayout linearCreateEvent;
         ImageView imageUserPicture;
+        ImageView exit;
     }
 
     private ViewHolder viewHolder = new ViewHolder();
@@ -39,9 +42,11 @@ public class HomeActivity extends BaseActivity {
         this.viewHolder.textUsername = findViewById(R.id.textUserName);
         this.viewHolder.imageUserPicture = findViewById(R.id.imageUserPicture);
         this.viewHolder.linearCreateEvent = findViewById(R.id.linearCreateEvent);
+        this.viewHolder.exit= findViewById(R.id.exit);
 
         this.viewHolder.linearCreateEvent.setOnClickListener(this);
         this.viewHolder.imageUserPicture.setOnClickListener(this);
+        this.viewHolder.exit.setOnClickListener(this);
 
         loadImageUser();
     }
@@ -58,6 +63,12 @@ public class HomeActivity extends BaseActivity {
                 break;
             case R.id.imageUserPicture:
                 goTo(PictureActivity.class);
+                break;
+            case R.id.exit:
+                Storage.set(HomeActivity.this, getString(R.string.storage_iparty_email_key), null);
+                Storage.set(HomeActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.FALSE.toString());
+                Storage.set(HomeActivity.this, getString(R.string.storage_iparty_token_key), null);
+                goTo(MainActivity.class);
                 break;
         }
     }

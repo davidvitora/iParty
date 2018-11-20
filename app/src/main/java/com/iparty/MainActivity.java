@@ -143,6 +143,7 @@ public class MainActivity extends BaseActivity {
                     }
                 });
             }
+            dismissProgressDialog(progressDialog);
         }
     }
 
