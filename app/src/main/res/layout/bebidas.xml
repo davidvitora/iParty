@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BEBIDAS"
+                android:textSize="16pt"
+                android:textColor="@color/colorPrimary"
+                />
+        </LinearLayout>
+        <View
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/colorText"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantidade de adultos :"
+                android:textSize="8pt"
+                android:textColor="@color/colorText"
+                />
+            <EditText
+                android:id="@+id/txtQuantidadeAdultos"
+                android:layout_width="30pt"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantidade de Crianças :"
+                android:textSize="8pt"
+                android:textColor="@color/colorText"
+                />
+            <EditText
+                android:id="@+id/txtQuantidadeCriancas"
+                android:layout_width="30pt"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bebidas desejadas"
+                android:textSize="8pt"
+                android:textColor="@color/colorText"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Noivo :"
+                android:textSize="8pt"
+                android:textColor="@color/colorText"
+                />
+            <EditText
+                android:id="@+id/txtNoivo"
+                android:layout_width="100pt"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Noiva :"
+                android:textSize="8pt"
+                android:textColor="@color/colorText"
+                />
+            <EditText
+                android:id="@+id/txtNoiva"
+                android:layout_width="100pt"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp">
+
+            <TableLayout
+                android:id="@+id/listBebidas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*"
+                android:padding="5dip"
+                android:divider="@drawable/divider"
+                android:showDividers="middle">
+
+                <TableRow
+                    android:gravity="center_horizontal">
+                    <TextView
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:layout_width="20dp"
+                        tools:padding="10dp" />
+
+                    <TextView
+                        android:text="Nome"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        tools:padding="10dp" />
+
+                    <TextView
+                        android:text="Quantidade Recomendada"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:maxWidth="200px"
+                        tools:padding="10dp" />
+
+                    <TextView
+                        android:text="Preço"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        tools:padding="10dp" />
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnAdicionarBebida"
+            android:layout_marginLeft="80px"
+            android:layout_width="wrap_content"
+            android:layout_height="18pt"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Adicionar"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+</ScrollView>

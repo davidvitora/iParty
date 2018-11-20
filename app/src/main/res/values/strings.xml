@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">iParty</string>
+
+    <!-- Facebook login -->
+    <string name="facebook_app_id">436453446883272</string>
+    <string name="fb_login_protocol_scheme">fb436453446883272</string>
+
+    <!-- Login -->
+    <string name="login_img_logo">imgLogo</string>
+    <string name="login_img_title">imgTitle</string>
+    <string name="login_subtext">Faça a festa dos seus sonhos acontecer!</string>
+    <string name="login_hint_email">Email</string>
+    <string name="login_hint_password">Senha</string>
+    <string name="login_forgtpassword">Esqueceu a senha?</string>
+    <string name="login_login">Login</string>
+    <string name="login_createaccount">Cadastrar</string>
+    <string name="register_createaccount">Criar Conta</string>
+    <string name="register_label_new">Novo Cadastro</string>
+    <string name="register_hint_confirm_password">Confirmar senha</string>
+    <string name="server_error">Erro no servidor</string>
+    <string name="server_error_title">Erro</string>
+    <string name="alert_dialog_button_ok">Ok</string>
+    <string name="alert_dialog_success">Sucesso</string>
+    <string name="alert_dialog_success_message">Cadastro efetuado!</string>
+    <string name="progress_dialog_message">Carregando...</string>
+    <string name="edit_text_error_message_insert_user">Insira o Usuario!</string>
+    <string name="edit_text_error_message_insert_email">É necessario informar o email</string>
+    <string name="edit_text_error_message_insert_password">Insira a Senha!</string>
+    <string name="edit_text_error_message_insert_confirm_password">É necessario confirmar a senha</string>
+    <string name="edit_text_error_message_passwords_not_match">A senha não corrreponde</string>
+    <string name="login_invalid_email_password">Email/senha inválida</string>
+    <string name="storage_iparty_token_key">iparty_token</string>
+    <string name="storage_iparty_user">iparty_user</string>
+    <string name="storage_iparty_remember_key">remember</string>
+    <string name="storage_iparty_email_key">email</string>
+    <string name="login_checkbox_remember_me">Lembrar-me</string>
+    <string name="title_activity_forget_password">forget_password</string>
+    <string name="title_activity_forget_password_code">forget_password_code</string>
+    <string name="title_activity_change_password">title_activity_change_password</string>
+    <string name="forget_password_label">Recuperar senha</string>
+    <string name="forget_password_button_send_email">Enviar</string>
+    <string name="forget_password_send_email_success">E-mail enviado com sucesso.</string>
+    <string name="forget_password_code_validade_code">Verificar código</string>
+    <string name="change_password_change_password_label">Alterar senha</string>
+    <string name="change_password_button_change">Alterar</string>
+    <string name="forget_password_email_not_found">Nenhuma conta cadastrada com este e-mail</string>
+    <string name="global_empty_string" />
+    <string name="forget_password_code_invalid_code">Código incorreto.</string>
+    <string name="change_password_success">Senha alterada com sucesso.</string>
+    <string name="forget_password_code_insert_the_number">Insira o número</string>
+    <string name="forget_password_code_number_hint">0</string>
+
+
+</resources>
