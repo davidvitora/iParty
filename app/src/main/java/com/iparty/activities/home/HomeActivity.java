@@ -2,6 +2,7 @@ package com.iparty.activities.home;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,9 +31,20 @@ public class HomeActivity extends BaseActivity {
         LinearLayout linearCreateEvent;
         ImageView imageUserPicture;
         ImageView exit;
+        private static class EventoRecente {
+            TextView eventoRecenteDias;
+            TextView eventoRecenteNome;
+            TextView eventoRecenteConvidados;
+            TextView eventoRecenteData;
+            TextView eventoRecenteLocal;
+            TextView eventoRecenteValor;
+            ImageView eventoRecenteFoto;
+            Button eventoMaisInformacoes;
+        }
     }
 
     private ViewHolder viewHolder = new ViewHolder();
+    private ViewHolder.EventoRecente evento = new ViewHolder.EventoRecente();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +56,19 @@ public class HomeActivity extends BaseActivity {
         this.viewHolder.linearCreateEvent = findViewById(R.id.linearCreateEvent);
         this.viewHolder.exit= findViewById(R.id.exit);
 
+        this.evento.eventoRecenteNome = findViewById(R.id.eventoRecenteNome);
+        this.evento.eventoRecenteConvidados= findViewById(R.id.eventoRecenteConvidados);
+        this.evento.eventoRecenteData = findViewById(R.id.eventoRecenteData);
+        this.evento.eventoRecenteDias = findViewById(R.id.eventoRecenteDias);
+        this.evento.eventoRecenteLocal = findViewById(R.id.eventoRecenteLocal);
+        this.evento.eventoRecenteValor = findViewById(R.id.eventoRecenteValor);
+        this.evento.eventoRecenteFoto = findViewById(R.id.eventoRecenteFoto);
+        this.evento.eventoMaisInformacoes = findViewById(R.id.eventoMaisInformacoes);
+
         this.viewHolder.linearCreateEvent.setOnClickListener(this);
         this.viewHolder.imageUserPicture.setOnClickListener(this);
         this.viewHolder.exit.setOnClickListener(this);
+        this.evento.eventoMaisInformacoes.setOnClickListener(this);
 
         loadImageUser();
     }
@@ -69,6 +91,9 @@ public class HomeActivity extends BaseActivity {
                 Storage.set(HomeActivity.this, getString(R.string.storage_iparty_remember_key), Boolean.FALSE.toString());
                 Storage.set(HomeActivity.this, getString(R.string.storage_iparty_token_key), null);
                 goTo(MainActivity.class);
+                break;
+            case R.id.eventoMaisInformacoes:
+
                 break;
         }
     }

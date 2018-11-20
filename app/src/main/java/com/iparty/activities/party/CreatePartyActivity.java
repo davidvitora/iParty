@@ -5,12 +5,14 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.iparty.BebidasActivity;
 import com.iparty.R;
 import com.iparty.enums.Party;
 import com.iparty.activities.common.BaseActivity;
@@ -46,6 +48,8 @@ public class CreatePartyActivity extends BaseActivity {
         TextInputLayout rlTxtNoiva;
         LinearLayout rlTxtNoivo;
         TextInputLayout rlTxtEndereco;
+
+        Button btnBebidas;
     }
 
     private Party currentSelectedParty = null;
@@ -89,11 +93,13 @@ public class CreatePartyActivity extends BaseActivity {
         this.viewHolder.rlTxtNoivo = findViewById(R.id.rlTxtNoivo);
         this.viewHolder.rlTxtAniversariante = findViewById(R.id.rlTxtAniversariante);
         this.viewHolder.rlTxtEndereco = findViewById(R.id.rlTxtEndereco);
+        this.viewHolder.btnBebidas = findViewById(R.id.btnBebidas);
 
         this.viewHolder.rlFestaAniversario.setOnClickListener(this);
         this.viewHolder.rl15ano.setOnClickListener(this);
         this.viewHolder.rlCasamento.setOnClickListener(this);
         this.viewHolder.data.setOnClickListener(this);
+        this.viewHolder.btnBebidas.setOnClickListener(this);
 
         this.viewHolder.rlTxtEndereco.setVisibility(View.VISIBLE);
 
@@ -154,8 +160,10 @@ public class CreatePartyActivity extends BaseActivity {
                 viewHolder.rlTxtNoivo.setVisibility(View.VISIBLE);
                 break;
             case R.id.btnConvidados:
+
                 break;
             case R.id.btnBebidas:
+                goTo(BebidasActivity.class);
                 break;
             case R.id.btnComidas:
                 break;

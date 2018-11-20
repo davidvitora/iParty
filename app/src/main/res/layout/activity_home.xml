@@ -21,6 +21,7 @@
             android:id="@+id/exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:src="@drawable/exit"
             android:layout_gravity="center" />
     </LinearLayout>
@@ -106,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="15dp"
-                    android:text="Aniversário do Jonelsvansom"
+                    android:text="Aniversário do João"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
 
@@ -187,7 +188,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="4dp"
-                                android:text="Rua do Oco"
+                                android:text="Rua das Flores Nº 168"
                                 android:maxLines="1"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="10dp" />
@@ -209,7 +210,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="2dp"
                                 android:maxLines="1"
-                                android:text="20000000,00"
+                                android:text="2.520,00"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="10dp" />
                         </LinearLayout>
@@ -221,6 +222,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/eventoMaisInformacoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
