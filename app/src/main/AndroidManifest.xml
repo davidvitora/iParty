@@ -43,7 +43,7 @@
         <activity
             android:name=".activities.home.PictureActivity"
             android:exported="true"></activity>
-
+         <activity android:name=".GuestActivity"></activity>
         <!-- Facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
