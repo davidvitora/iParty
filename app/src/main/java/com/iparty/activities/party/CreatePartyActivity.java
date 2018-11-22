@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.iparty.BebidasActivity;
+import com.iparty.GuestActivity;
 import com.iparty.R;
 import com.iparty.enums.Party;
 import com.iparty.activities.common.BaseActivity;
@@ -50,6 +51,7 @@ public class CreatePartyActivity extends BaseActivity {
         TextInputLayout rlTxtEndereco;
 
         Button btnBebidas;
+        Button btnConvidados;
     }
 
     private Party currentSelectedParty = null;
@@ -78,6 +80,7 @@ public class CreatePartyActivity extends BaseActivity {
         viewHolder.rlFestaAniversario = findViewById(R.id.rlFestaAniversario);
         viewHolder.rl15ano = findViewById(R.id.rl15Anos);
         viewHolder.rlCasamento = findViewById(R.id.rlCasamento);
+        viewHolder.btnConvidados = findViewById(R.id.btnConvidados);
 
 
         this.viewHolder.data.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -100,6 +103,7 @@ public class CreatePartyActivity extends BaseActivity {
         this.viewHolder.rlCasamento.setOnClickListener(this);
         this.viewHolder.data.setOnClickListener(this);
         this.viewHolder.btnBebidas.setOnClickListener(this);
+        this.viewHolder.btnConvidados.setOnClickListener(this);
 
         this.viewHolder.rlTxtEndereco.setVisibility(View.VISIBLE);
 
@@ -160,7 +164,7 @@ public class CreatePartyActivity extends BaseActivity {
                 viewHolder.rlTxtNoivo.setVisibility(View.VISIBLE);
                 break;
             case R.id.btnConvidados:
-
+                goTo(GuestActivity.class);
                 break;
             case R.id.btnBebidas:
                 goTo(BebidasActivity.class);
