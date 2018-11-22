@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.iparty.BebidasActivity;
+import com.iparty.ComidasActivity;
 import com.iparty.GuestActivity;
 import com.iparty.R;
 import com.iparty.enums.Party;
@@ -52,6 +53,7 @@ public class CreatePartyActivity extends BaseActivity {
 
         Button btnBebidas;
         Button btnConvidados;
+        Button btnComidas;
     }
 
     private Party currentSelectedParty = null;
@@ -81,6 +83,8 @@ public class CreatePartyActivity extends BaseActivity {
         viewHolder.rl15ano = findViewById(R.id.rl15Anos);
         viewHolder.rlCasamento = findViewById(R.id.rlCasamento);
         viewHolder.btnConvidados = findViewById(R.id.btnConvidados);
+        viewHolder.btnComidas = findViewById(R.id.btnComidas);
+
 
 
         this.viewHolder.data.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -104,6 +108,7 @@ public class CreatePartyActivity extends BaseActivity {
         this.viewHolder.data.setOnClickListener(this);
         this.viewHolder.btnBebidas.setOnClickListener(this);
         this.viewHolder.btnConvidados.setOnClickListener(this);
+        this.viewHolder.btnComidas.setOnClickListener(this);
 
         this.viewHolder.rlTxtEndereco.setVisibility(View.VISIBLE);
 
@@ -169,12 +174,13 @@ public class CreatePartyActivity extends BaseActivity {
             case R.id.btnBebidas:
                 goTo(BebidasActivity.class);
                 break;
-            case R.id.btnComidas:
-                break;
             case R.id.btnCriarNovoEvento:
                 break;
             case R.id.txtData:
                 this.datePicker.show();
+                break;
+            case R.id.btnComidas:
+                goTo(ComidasActivity.class);
                 break;
         }
     }
